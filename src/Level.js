@@ -3,6 +3,11 @@ import * as THREE from "three";
 
 // we create a box geometry that we can reuse in all places by just changing the scale of the mesh using it
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+// materials
+const matFloor1 = new THREE.MeshStandardMaterial({ color: "green" });
+const matFloor2 = new THREE.MeshStandardMaterial({ color: "blue" });
+const matObstacule = new THREE.MeshStandardMaterial({ color: "red" });
+const matWall = new THREE.MeshStandardMaterial({ color: "pink" });
 
 /**
  *  This is the first block of the game and is the start of all the levels
@@ -19,12 +24,11 @@ function BlockStart({ position = [0, 0, 0] }) {
       {/* floor */}
       <mesh
         geometry={boxGeometry}
+        material={matFloor1}
         position={[0, -0.1, 0]}
         scale={[4, 0.2, 4]}
         receiveShadow
-      >
-        <meshStandardMaterial color={"red"}></meshStandardMaterial>
-      </mesh>
+      ></mesh>
     </group>
   );
 }
