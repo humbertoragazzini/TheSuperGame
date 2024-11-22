@@ -35,29 +35,27 @@ function BlockStart({ position = [0, 0, 0] }) {
   );
 }
 
-// old
-/**
- *  This component is a block class obstacule with a spinning mesh that change y x and z position
- *
- *  @param {object} props - The property passed to the component
- *  @param {[number,number,number]} - min position of the translation
- *  @param {[number,number,number]} - max position of the translation
- *  @param {number} - total force speed of the spinner
- *
- * @returns {JSX.Element} The final return is a block obstacul spinner with the min max and speed set it.
- */
-
-// new
 /**
  * This component is a block obstacle with a spinning mesh that moves within defined bounds.
  * It can change its position (x, y, z) and spins at a configurable speed.
  *
  * @param {Object} props - The properties passed to the component.
- * @param {[number,number,number]} - main position of the block
- * @param {[number, number, number]} [props.minTranslation=[0, 0, 0]] - The minimum position for the translation (x, y, z).
- * @param {[number, number, number]} [props.maxTranslation=[0, 0, 0]] - The maximum position for the translation (x, y, z).
- * @param {number} [props.translationSpeed=1] - The translation speed of the spinner.
- * @param {number} [props.rotationSpeed=1] - The rotational speed of the spinner.
+ * @param {[number,number,number]} - main position of the block example:
+ *    - `position[0]`: X-coordinate
+ *    - `position[1]`: Y-coordinate
+ *    - `position[2]`: Z-coordinate
+ * @param {[number, number, number]} [props.minTranslation=[0, 0, 0]] - The minimum position for the translation (x, y, z) example:
+ *    - `minTranslation[0]`: X-coordinate
+ *    - `minTranslation[1]`: Y-coordinate
+ *    - `minTranslation[2]`: Z-coordinate
+ * @param {[number, number, number]} [props.maxTranslation=[0, 0, 0]] - The maximum position for the translation (x, y, z) example:
+ *    - `maxTranslation[0]`: X-coordinate
+ *    - `maxTranslation[1]`: Y-coordinate
+ *    - `maxTranslation[2]`: Z-coordinate
+ * @param {number} [props.translationSpeed=1] - The translation speed of the spinner example:
+ *    - `translationSpeed`: speed
+ * @param {number} [props.rotationSpeed=1] - The rotational speed of the spinner example:
+ *    - `rotationSpeed`: speed
  *
  * @returns {JSX.Element} A JSX element representing the spinning block obstacle.
  */
@@ -112,6 +110,11 @@ function BlockSpinner({
     </group>
   );
 }
+
+/**
+ *
+ * @returns {JSX.Element} A JSX element representing a complete level
+ */
 
 export default function Level() {
   return (
