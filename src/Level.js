@@ -53,9 +53,11 @@ function BlockStart({ position = [0, 0, 0] }) {
  * It can change its position (x, y, z) and spins at a configurable speed.
  *
  * @param {Object} props - The properties passed to the component.
+ * @param {[number,number,number]} - main position of the block
  * @param {[number, number, number]} [props.minTranslation=[0, 0, 0]] - The minimum position for the translation (x, y, z).
  * @param {[number, number, number]} [props.maxTranslation=[0, 0, 0]] - The maximum position for the translation (x, y, z).
- * @param {number} [props.speed=1] - The rotational speed of the spinner.
+ * @param {number} [props.translationSpeed=1] - The translation speed of the spinner.
+ * @param {number} [props.rotationSpeed=1] - The rotational speed of the spinner.
  *
  * @returns {JSX.Element} A JSX element representing the spinning block obstacle.
  */
@@ -121,6 +123,41 @@ export default function Level() {
         rotationSpeed={4}
         minTranslation={[0, 0, 0]}
         maxTranslation={[1, 1, 1]}
+      ></BlockSpinner>
+      <BlockSpinner
+        position={[8, -0.1, 0]}
+        translationSpeed={4}
+        rotationSpeed={1}
+        minTranslation={[0, 0, 0]}
+        maxTranslation={[0.25, 1, 0.25]}
+      ></BlockSpinner>
+      <BlockSpinner
+        position={[12, -0.1, 0]}
+        translationSpeed={5}
+        rotationSpeed={5}
+        minTranslation={[0, 0, 0]}
+        maxTranslation={[1, 0.25, 1]}
+      ></BlockSpinner>
+      <BlockSpinner
+        position={[16, -0.1, 0]}
+        translationSpeed={1}
+        rotationSpeed={4}
+        minTranslation={[0, 0, 0]}
+        maxTranslation={[0, 0, 0]}
+      ></BlockSpinner>
+      <BlockSpinner
+        position={[20, -0.1, 0]}
+        translationSpeed={1}
+        rotationSpeed={2}
+        minTranslation={[0, 0, 0]}
+        maxTranslation={[0.5, 0.25, 0.5]}
+      ></BlockSpinner>
+      <BlockSpinner
+        position={[24, -0.1, 0]}
+        translationSpeed={2}
+        rotationSpeed={4}
+        minTranslation={[0, 0, 0]}
+        maxTranslation={[0, 0.5, 0]}
       ></BlockSpinner>
     </>
   );
