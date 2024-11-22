@@ -93,7 +93,12 @@ function BlockSpinner({
   });
   return (
     <group position={position}>
-      <RigidBody ref={spinner} type="kinematicPosition">
+      <RigidBody
+        ref={spinner}
+        type="kinematicPosition"
+        restitution={0.1}
+        friction={0}
+      >
         <mesh
           material={matObstacule}
           geometry={boxGeometry}
