@@ -73,9 +73,9 @@ function BlockSpinner({
     const quaternion = new THREE.Quaternion();
     quaternion.setFromEuler(eulerRotation);
     spinner.current.setNextKinematicTranslation({
-      x: position[0],
+      x: Math.sin(clock) * maxTranslation[0] + position[0],
       y: 0 + (Math.sin(clock) + 1) * maxTranslation[1] + 0.1,
-      z: position[1],
+      z: Math.cos(clock) * maxTranslation[2] + position[1],
     });
     spinner.current.setNextKinematicRotation(quaternion);
   });
@@ -107,7 +107,7 @@ export default function Level() {
       <BlockStart position={[0, -0.1, 0]}></BlockStart>
       <BlockSpinner
         position={[4, -0.1, 0]}
-        maxTranslation={[0, 1, 0]}
+        maxTranslation={[1, 1, 1]}
       ></BlockSpinner>
     </>
   );
