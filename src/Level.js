@@ -64,18 +64,28 @@ function BlockSpinner({
   position = [0, 0, 0],
   minTranslation = [0, 0, 0],
   maxTranslation = [0, 0, 0],
-  speed = 1,
+  translationSpeed = 1,
+  rotationSpeed = 1,
 }) {
   const spinner = useRef();
   useFrame((state, delta) => {
     const clock = state.clock.getElapsedTime();
-    const eulerRotation = new THREE.Euler(0, clock, 0); // Rotate around Y-axis
+    const eulerRotation = new THREE.Euler(0, clock * rotationSpeed, 0); // Rotate around Y-axis
     const quaternion = new THREE.Quaternion();
     quaternion.setFromEuler(eulerRotation);
     spinner.current.setNextKinematicTranslation({
-      x: minTranslation[0] + Math.sin(clock) * maxTranslation[0] + position[0],
-      y: minTranslation[1] + (Math.sin(clock) + 1) * maxTranslation[1] + 0.1,
-      z: minTranslation[2] + Math.cos(clock) * maxTranslation[2] + position[1],
+      x:
+        minTranslation[0] +
+        Math.sin(clock * translationSpeed) * maxTranslation[0] +
+        position[0],
+      y:
+        minTranslation[1] +
+        (Math.sin(clock * translationSpeed) + 1) * maxTranslation[1] +
+        0.1,
+      z:
+        minTranslation[2] +
+        Math.cos(clock * translationSpeed) * maxTranslation[2] +
+        position[1],
     });
     spinner.current.setNextKinematicRotation(quaternion);
   });
@@ -107,6 +117,9 @@ export default function Level() {
       <BlockStart position={[0, -0.1, 0]}></BlockStart>
       <BlockSpinner
         position={[4, -0.1, 0]}
+        translationSpeed={2}
+        rotationSpeed={4}
+        minTranslation={[0, 0, 0]}
         maxTranslation={[1, 1, 1]}
       ></BlockSpinner>
     </>
