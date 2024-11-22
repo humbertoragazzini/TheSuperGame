@@ -129,6 +129,18 @@ function BlockSpinner({
 
 /**
  *
+ * @returns
+ */
+function BlockLimboBar() {
+  return (
+    <RigidBody>
+      <mesh></mesh>
+    </RigidBody>
+  );
+}
+
+/**
+ *
  * @returns {JSX.Element} A JSX element representing a complete level
  */
 
