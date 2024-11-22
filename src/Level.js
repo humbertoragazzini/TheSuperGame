@@ -85,7 +85,7 @@ function BlockSpinner({
         <mesh
           material={matObstacule}
           geometry={boxGeometry}
-          scale={[0.25, 0.25, 3.5]}
+          scale={[0.25, 0.25, 1.5]}
         ></mesh>
       </RigidBody>
       <RigidBody type="fixed">
