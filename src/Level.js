@@ -40,6 +40,7 @@ function BlockStart({ position = [0, 0, 0] }) {
  * It can change its position (x, y, z) and spins at a configurable speed.
  *
  * @param {Object} props - The properties passed to the component.
+ * @param {boolean} - This dictate the type of material used in the floor if true floor1 will be used
  * @param {[number,number,number]} - main position of the block example:
  *    - `position[0]`: X-coordinate
  *    - `position[1]`: Y-coordinate
@@ -62,6 +63,7 @@ function BlockStart({ position = [0, 0, 0] }) {
 
 function BlockSpinner({
   position = [0, 0, 0],
+  firstFloor = true,
   minTranslation = [0, 0, 0],
   maxTranslation = [0, 0, 0],
   translationSpeed = 1,
@@ -101,7 +103,7 @@ function BlockSpinner({
       <RigidBody type="fixed">
         <mesh
           geometry={boxGeometry}
-          material={matFloor1}
+          material={firstFloor ? matFloor1 : matFloor2}
           position={[0, 0, 0]}
           scale={[4, 0.2, 4]}
           receiveShadow
@@ -124,6 +126,7 @@ export default function Level() {
         position={[4, -0.1, 0]}
         translationSpeed={2}
         rotationSpeed={4}
+        firstFloor={false}
         minTranslation={[0, 0, 0]}
         maxTranslation={[1, 1, 1]}
       ></BlockSpinner>
@@ -131,6 +134,7 @@ export default function Level() {
         position={[8, -0.1, 0]}
         translationSpeed={4}
         rotationSpeed={1}
+        firstFloor={true}
         minTranslation={[0, 0, 0]}
         maxTranslation={[0.25, 1, 0.25]}
       ></BlockSpinner>
@@ -138,6 +142,7 @@ export default function Level() {
         position={[12, -0.1, 0]}
         translationSpeed={5}
         rotationSpeed={5}
+        firstFloor={false}
         minTranslation={[0, 0, 0]}
         maxTranslation={[1, 0.25, 1]}
       ></BlockSpinner>
@@ -145,6 +150,7 @@ export default function Level() {
         position={[16, -0.1, 0]}
         translationSpeed={1}
         rotationSpeed={4}
+        firstFloor={true}
         minTranslation={[0, 0, 0]}
         maxTranslation={[0, 0, 0]}
       ></BlockSpinner>
@@ -152,6 +158,7 @@ export default function Level() {
         position={[20, -0.1, 0]}
         translationSpeed={1}
         rotationSpeed={2}
+        firstFloor={false}
         minTranslation={[0, 0, 0]}
         maxTranslation={[0.5, 0.25, 0.5]}
       ></BlockSpinner>
@@ -159,6 +166,7 @@ export default function Level() {
         position={[24, -0.1, 0]}
         translationSpeed={2}
         rotationSpeed={4}
+        firstFloor={true}
         minTranslation={[0, 0, 0]}
         maxTranslation={[0, 0.5, 0]}
       ></BlockSpinner>
