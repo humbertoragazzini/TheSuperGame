@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import * as THREE from "three";
 
 // we create a box geometry that we can reuse in all places by just changing the scale of the mesh using it
@@ -70,9 +70,17 @@ function BlockSpinner({
   rotationSpeed = 1,
 }) {
   const spinner = useRef();
+  const [rotationSpeedRandom] = useState(() => {
+    return Math.random() - 0.5 > 0 ? -1 : 1;
+  });
+  console.log(rotationSpeedRandom);
   useFrame((state, delta) => {
     const clock = state.clock.getElapsedTime();
-    const eulerRotation = new THREE.Euler(0, clock * rotationSpeed, 0); // Rotate around Y-axis
+    const eulerRotation = new THREE.Euler(
+      0,
+      clock * rotationSpeed * rotationSpeedRandom,
+      0
+    ); // Rotate around Y-axis
     const quaternion = new THREE.Quaternion();
     quaternion.setFromEuler(eulerRotation);
     spinner.current.setNextKinematicTranslation({
