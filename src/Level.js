@@ -131,11 +131,55 @@ function BlockSpinner({
  *
  * @returns
  */
-function BlockLimboBar() {
+function BlockLimboBar({
+  position = [0, 0, 0],
+  firstFloor = true,
+  minTranslation = [0, 0, 0],
+  maxTranslation = [0, 0, 0],
+  translationSpeed = 1,
+}) {
+  const spinner = useRef();
+  const [offsetTranslation] = useState(() => {
+    return Math.random() * Math.PI * 2;
+  });
+
+  useFrame((state, delta) => {
+    const clock = state.clock.getElapsedTime();
+    spinner.current.setNextKinematicTranslation({
+      x: 0,
+      y:
+        minTranslation[1] +
+        (Math.sin(clock * translationSpeed + offsetTranslation) + 1) *
+          maxTranslation[1] +
+        0.1,
+      z: 0,
+    });
+  });
   return (
-    <RigidBody>
-      <mesh></mesh>
-    </RigidBody>
+    <group position={position}>
+      <RigidBody
+        ref={spinner}
+        type="kinematicPosition"
+        restitution={0.1}
+        friction={0}
+      >
+        <mesh
+          material={matObstacule}
+          geometry={boxGeometry}
+          scale={[0.25, 0.25, 3.85]}
+          castShadow
+        ></mesh>
+      </RigidBody>
+      <RigidBody type="fixed">
+        <mesh
+          geometry={boxGeometry}
+          material={firstFloor ? matFloor1 : matFloor2}
+          position={[0, 0, 0]}
+          scale={[4, 0.2, 4]}
+          receiveShadow
+        />
+      </RigidBody>
+    </group>
   );
 }
 
@@ -148,54 +192,20 @@ export default function Level() {
   return (
     <>
       <BlockStart position={[0, -0.1, 0]}></BlockStart>
-      <BlockSpinner
+      <BlockLimboBar
         position={[4, -0.1, 0]}
         translationSpeed={2}
-        rotationSpeed={4}
         firstFloor={false}
         minTranslation={[0, 0, 0]}
         maxTranslation={[1, 1, 1]}
-      ></BlockSpinner>
-      <BlockSpinner
+      ></BlockLimboBar>
+      <BlockLimboBar
         position={[8, -0.1, 0]}
-        translationSpeed={4}
-        rotationSpeed={1}
-        firstFloor={true}
-        minTranslation={[0, 0, 0]}
-        maxTranslation={[0.25, 1, 0.25]}
-      ></BlockSpinner>
-      <BlockSpinner
-        position={[12, -0.1, 0]}
-        translationSpeed={5}
-        rotationSpeed={5}
-        firstFloor={false}
-        minTranslation={[0, 0, 0]}
-        maxTranslation={[1, 0.25, 1]}
-      ></BlockSpinner>
-      <BlockSpinner
-        position={[16, -0.1, 0]}
-        translationSpeed={1}
-        rotationSpeed={4}
-        firstFloor={true}
-        minTranslation={[0, 0, 0]}
-        maxTranslation={[0, 0, 0]}
-      ></BlockSpinner>
-      <BlockSpinner
-        position={[20, -0.1, 0]}
-        translationSpeed={1}
-        rotationSpeed={2}
-        firstFloor={false}
-        minTranslation={[0, 0, 0]}
-        maxTranslation={[0.5, 0.25, 0.5]}
-      ></BlockSpinner>
-      <BlockSpinner
-        position={[24, -0.1, 0]}
         translationSpeed={2}
-        rotationSpeed={4}
-        firstFloor={true}
+        firstFloor={false}
         minTranslation={[0, 0, 0]}
-        maxTranslation={[0, 0.5, 0]}
-      ></BlockSpinner>
+        maxTranslation={[1, 1, 1]}
+      ></BlockLimboBar>
     </>
   );
 }
