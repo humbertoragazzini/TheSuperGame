@@ -138,27 +138,27 @@ function BlockLimboBar({
   maxTranslation = [0, 0, 0],
   translationSpeed = 1,
 }) {
-  const spinner = useRef();
+  const limbobar = useRef();
   const [offsetTranslation] = useState(() => {
     return Math.random() * Math.PI * 2;
   });
 
   useFrame((state, delta) => {
     const clock = state.clock.getElapsedTime();
-    spinner.current.setNextKinematicTranslation({
-      x: 0,
+    limbobar.current.setNextKinematicTranslation({
+      x: position[0],
       y:
         minTranslation[1] +
         (Math.sin(clock * translationSpeed + offsetTranslation) + 1) *
           maxTranslation[1] +
         0.1,
-      z: 0,
+      z: position[2],
     });
   });
   return (
     <group position={position}>
       <RigidBody
-        ref={spinner}
+        ref={limbobar}
         type="kinematicPosition"
         restitution={0.1}
         friction={0}
