@@ -14,7 +14,11 @@ import { useGLTF } from "@react-three/drei";
 
 export default function BlockEnd({ position = [0, 0, 0] }) {
   const { nodes } = useGLTF("./donut.glb");
-  console.log(nodes);
+
+  nodes.Scene.children.forEach((mesh) => {
+    console.log(mesh);
+    mesh.castShadow = true;
+  });
 
   return (
     <group position={position}>
@@ -29,11 +33,7 @@ export default function BlockEnd({ position = [0, 0, 0] }) {
         />
       </RigidBody>
       <RigidBody type="fixed">
-        <primitive
-          object={nodes.Scene}
-          position={[0, 0.23, 0]}
-          castShadow
-        ></primitive>
+        <primitive object={nodes.Scene} position={[0, 0.23, 0]}></primitive>
       </RigidBody>
     </group>
   );
