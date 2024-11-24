@@ -5,6 +5,7 @@ import Level from "./components/Level.jsx";
 import BlockSpinner from "./components/Blocks/Spinner.jsx";
 import BlockAxe from "./components/Blocks/Axe.jsx";
 import BlockLimboBar from "./components/Blocks/Limbo.jsx";
+import Player from "./Players/Player.jsx";
 
 export default function Experience() {
   return (
@@ -13,7 +14,8 @@ export default function Experience() {
 
       <Lights />
       <Physics debug>
-        <Level count={150}></Level>
+        <Level count={5}></Level>
+        <Player></Player>
       </Physics>
     </>
   );

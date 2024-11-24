@@ -7,20 +7,23 @@
  *    - `position[2]`: Z-coordinate
  * @returns  {JSX.Element} as a return we return the start floor of the game
  */
+import { RigidBody } from "@react-three/rapier";
 import { boxGeometry } from "../../Geometries/Geometries";
 import { matFloor1 } from "../../Materials/Materials";
 
 export default function BlockStart({ position = [0, 0, 0] }) {
   return (
     <group position={position}>
-      {/* floor */}
-      <mesh
-        geometry={boxGeometry}
-        material={matFloor1}
-        position={[0, 0, 0]}
-        scale={[4, 0.2, 4]}
-        receiveShadow
-      />
+      <RigidBody type="fixed">
+        {/* floor */}
+        <mesh
+          geometry={boxGeometry}
+          material={matFloor1}
+          position={[0, 0, 0]}
+          scale={[4, 0.2, 4]}
+          receiveShadow
+        />
+      </RigidBody>
     </group>
   );
 }
