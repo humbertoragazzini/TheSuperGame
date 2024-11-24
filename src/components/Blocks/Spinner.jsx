@@ -1,8 +1,3 @@
-import { useFrame } from "@react-three/fiber";
-import { RigidBody } from "@react-three/rapier";
-import { useRef, useState } from "react";
-import * as THREE from "three";
-
 /**
  * This component is a block obstacle with a spinning mesh that moves within defined bounds.
  * It can change its position (x, y, z) and spins at a configurable speed.
@@ -30,8 +25,12 @@ import * as THREE from "three";
  *
  * @returns {JSX.Element} A JSX element representing the spinning block obstacle.
  */
+import { useFrame } from "@react-three/fiber";
+import { RigidBody } from "@react-three/rapier";
+import { useRef, useState } from "react";
+import * as THREE from "three";
 
-function BlockSpinner({
+export default function BlockSpinner({
   position = [0, 0, 0],
   firstFloor = true,
   minTranslation = [0, 0, 0],
