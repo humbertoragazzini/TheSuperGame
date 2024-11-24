@@ -25,6 +25,7 @@
  *
  * @returns {JSX.Element} A JSX element representing the spinning block obstacle.
  */
+
 import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useRef, useState } from "react";

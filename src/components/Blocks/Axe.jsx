@@ -17,7 +17,13 @@
  *
  * @returns
  */
-function BlockAxe({
+import { useRef, useState } from "react";
+import { boxGeometry } from "../../Geometries/Geometries";
+import { matFloor1, matFloor2, matObstacule } from "../../Materials/Materials";
+import { useFrame } from "@react-three/fiber";
+import { RigidBody } from "@react-three/rapier";
+
+export default function BlockAxe({
   position = [0, 0, 0],
   firstFloor = true,
   minTranslation = [0, 0, 0],
