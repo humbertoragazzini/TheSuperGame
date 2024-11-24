@@ -9,7 +9,10 @@ import BlockLimboBar from "./Blocks/Limbo";
 import BlockSpinner from "./Blocks/Spinner";
 import BlockStart from "./Blocks/Start";
 
-export default function Level() {
+export default function Level({
+  count = 5,
+  types = [BlockSpinner, BlockAxe, BlockLimboBar],
+}) {
   return (
     <>
       <BlockStart position={[0, -0.1, 0]}></BlockStart>
