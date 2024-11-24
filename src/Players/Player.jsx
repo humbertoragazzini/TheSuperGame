@@ -5,7 +5,7 @@ export default function Player() {
   return (
     <RigidBody position={[0, 10, 0]} colliders={"ball"}>
       <mesh>
-        <sphereGeometry args={[1, 10, 10]} />
+        <icosahedronGeometry args={[0.5, 1]} />
         <meshPhysicalMaterial
           color="blue"
           transmission={0.9}
@@ -16,7 +16,12 @@ export default function Player() {
           metalness={0}
           ior={1.5}
         />
-        <pointLight intensity={15} position={[0, 0.5, 0]} />
+        <pointLight intensity={15} position={[0, 0.8, 0]} />
+        <pointLight intensity={15} position={[0.8, 0, 0]} />
+        <pointLight intensity={15} position={[-0.8, 0, 0]} />
+        <pointLight intensity={15} position={[0, -0.8, 0]} />
+        <pointLight intensity={15} position={[0, 0, 0.8]} />
+        <pointLight intensity={15} position={[0, 0, -0.8]} />
       </mesh>
     </RigidBody>
   );
