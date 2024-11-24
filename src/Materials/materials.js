@@ -1,3 +1,4 @@
+import * as THREE from "three";
 export const matFloor1 = new THREE.MeshStandardMaterial({ color: "green" });
 export const matFloor2 = new THREE.MeshStandardMaterial({ color: "blue" });
 export const matObstacule = new THREE.MeshStandardMaterial({ color: "red" });
