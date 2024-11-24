@@ -13,10 +13,7 @@ export default function Experience() {
 
       <Lights />
       <Physics debug>
-        <Level
-          count={5}
-          types={[BlockSpinner, BlockAxe, BlockLimboBar]}
-        ></Level>
+        <Level></Level>
       </Physics>
     </>
   );
