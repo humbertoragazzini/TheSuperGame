@@ -37,11 +37,9 @@ export default function BlockSpinner({
   position = [0, 0, 0],
   firstFloor = true,
   minTranslation = [0, 0, 0],
-  maxTranslation = [0, 0, 0],
+  maxTranslation = [0, 1, 0],
   translationSpeed = 1,
   rotationSpeed = 1,
-  material,
-  geometry,
 }) {
   const spinner = useRef();
   const [rotationSpeedRandom] = useState(() => {

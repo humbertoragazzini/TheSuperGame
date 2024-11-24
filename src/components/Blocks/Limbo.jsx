@@ -27,7 +27,7 @@ export default function BlockLimboBar({
   position = [0, 0, 0],
   firstFloor = true,
   minTranslation = [0, 0, 0],
-  maxTranslation = [0, 0, 0],
+  maxTranslation = [0, 1, 0],
   translationSpeed = 1,
 }) {
   const limbobar = useRef();

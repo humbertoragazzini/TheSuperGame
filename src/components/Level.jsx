@@ -31,7 +31,7 @@ export default function Level({
     <>
       <BlockStart position={[0, -0.1, 0]}></BlockStart>
       {blocks.map((Block, i) => {
-        return <Block position={[i * 4 + 4, -0.1, 0]} />;
+        return <Block key={i} position={[i * 4 + 4, -0.1, 0]} />;
       })}
       <BlockEnd position={[4 * count + 4, -0.1, 0]}></BlockEnd>
     </>

@@ -26,8 +26,8 @@ import { RigidBody } from "@react-three/rapier";
 export default function BlockAxe({
   position = [0, 0, 0],
   firstFloor = true,
-  minTranslation = [0, 0, 0],
-  maxTranslation = [0, 0, 0],
+  minTranslation = [0, 0, -1.5],
+  maxTranslation = [0, 0, 1.5],
   translationSpeed = 1,
 }) {
   const limbobar = useRef();
