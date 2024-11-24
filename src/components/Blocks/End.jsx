@@ -7,7 +7,10 @@
  *    - `position[2]`: Z-coordinate
  * @returns  {JSX.Element} as a return we return the start floor of the game
  */
-function BlockEnd({ position = [0, 0, 0] }) {
+import { boxGeometry } from "../../Geometries/Geometries";
+import { matFloor1, matFloor2, matObstacule } from "../../Materials/Materials";
+
+export default function BlockEnd({ position = [0, 0, 0] }) {
   return (
     <group position={position}>
       {/* floor */}
