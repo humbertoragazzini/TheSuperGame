@@ -13,7 +13,7 @@ export default function Experience() {
 
       <Lights />
       <Physics debug>
-        <Level></Level>
+        <Level count={5}></Level>
       </Physics>
     </>
   );

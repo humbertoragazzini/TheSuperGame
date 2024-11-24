@@ -30,8 +30,8 @@ export default function Level({
   return (
     <>
       <BlockStart position={[0, -0.1, 0]}></BlockStart>
-      {blocks.map((block, i) => {
-        return block({ position: [i * 4 + 4, -0.1, 0] });
+      {blocks.map((Block, i) => {
+        return <Block position={[i * 4 + 4, -0.1, 0]} />;
       })}
       <BlockEnd position={[4 * count + 4, -0.1, 0]}></BlockEnd>
     </>
