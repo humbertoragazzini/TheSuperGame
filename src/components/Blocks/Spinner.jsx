@@ -29,6 +29,8 @@ import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useRef, useState } from "react";
 import * as THREE from "three";
+import { boxGeometry } from "../../Geometries/Geometries";
+import { matFloor1, matFloor2, matObstacule } from "../../Materials/Materials";
 
 export default function BlockSpinner({
   position = [0, 0, 0],
