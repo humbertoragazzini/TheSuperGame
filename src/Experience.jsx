@@ -10,11 +10,11 @@ import Player from "./Players/Player.jsx";
 export default function Experience() {
   return (
     <>
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
 
       <Lights />
       <Physics debug>
-        <Level count={5}></Level>
+        <Level count={150}></Level>
         <Player position={[0.25, 6, 0.15]}></Player>
       </Physics>
     </>

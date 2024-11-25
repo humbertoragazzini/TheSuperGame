@@ -36,15 +36,17 @@ export default function BlockAxe({
   });
 
   useFrame((state, delta) => {
-    const clock = state.clock.getElapsedTime();
-    limbobar.current.setNextKinematicTranslation({
-      x: position[0],
-      y: position[1] + 1.1,
-      z:
-        minTranslation[2] +
-        (Math.sin(clock * translationSpeed + offsetTranslation) + 1) *
-          maxTranslation[2],
-    });
+    if (limbobar.current) {
+      const clock = state.clock.getElapsedTime();
+      limbobar.current.setNextKinematicTranslation({
+        x: position[0],
+        y: position[1] + 1.1,
+        z:
+          minTranslation[2] +
+          (Math.sin(clock * translationSpeed + offsetTranslation) + 1) *
+            maxTranslation[2],
+      });
+    }
   });
   return (
     <group position={position}>
