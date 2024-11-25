@@ -1,9 +1,14 @@
 import { RigidBody } from "@react-three/rapier";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
-export default function Player() {
+export default function Player({ position = [0, 10, 0] }) {
   return (
-    <RigidBody position={[0, 10, 0]} colliders={"ball"}>
+    <RigidBody
+      position={position}
+      colliders={"ball"}
+      restitution={0.65}
+      friction={1}
+    >
       <mesh>
         <icosahedronGeometry args={[0.5, 1]} />
         <meshPhysicalMaterial
