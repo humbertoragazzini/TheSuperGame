@@ -25,6 +25,7 @@ root.render(
         position: [2.5, 4, 6],
       }}
     >
+      <color args={["black"]} attach={"background"}></color>
       <Experience />
     </Canvas>
   </KeyboardControls>

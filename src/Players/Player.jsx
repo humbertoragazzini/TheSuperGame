@@ -16,7 +16,7 @@ export default function Player({ position = [0, 10, 0] }) {
 
   useFrame((state, delta) => {
     if (playerRef.current) {
-      const { forward, backward, leftward, rightward } = getKeys();
+      const { forward, backward, leftward, rightward, jump } = getKeys();
       const impulse = { x: 0, y: 0, z: 0 };
       const torque = { x: 0, y: 0, z: 0 };
       const impulseStrenght = 1 * delta;
@@ -33,10 +33,13 @@ export default function Player({ position = [0, 10, 0] }) {
       if (rightward) {
         impulse.z = impulseStrenght;
       }
+      if (jump) {
+        impulse.y = impulseStrenght * 15;
+      }
       console.log(playerRef.current.translation());
       camera.position.x = playerRef.current.translation().x - 5;
       camera.position.z = playerRef.current.translation().z;
-      camera.position.y = 1.5;
+      camera.position.y = 3.5;
       const translation = playerRef.current.translation();
       const target = new THREE.Vector3(
         translation.x,
@@ -59,7 +62,7 @@ export default function Player({ position = [0, 10, 0] }) {
       ref={playerRef}
     >
       <mesh ref={mesh}>
-        <icosahedronGeometry args={[0.5, 1]} />
+        <sphereGeometry args={[0.5, 20, 20]} />
         <meshPhysicalMaterial
           color="blue"
           transmission={0.9}

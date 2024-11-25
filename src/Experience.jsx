@@ -13,7 +13,7 @@ export default function Experience() {
       {/* <OrbitControls makeDefault /> */}
 
       <Lights />
-      <Physics debug>
+      <Physics>
         <Level count={150}></Level>
         <Player position={[0.25, 6, 0.15]}></Player>
       </Physics>
