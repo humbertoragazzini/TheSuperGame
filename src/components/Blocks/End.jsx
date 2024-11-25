@@ -16,7 +16,6 @@ export default function BlockEnd({ position = [0, 0, 0] }) {
   const { nodes } = useGLTF("./donut.glb");
 
   nodes.Scene.children.forEach((mesh) => {
-    console.log(mesh);
     mesh.castShadow = true;
   });
 
