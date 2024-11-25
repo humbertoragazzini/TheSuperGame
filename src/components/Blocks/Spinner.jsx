@@ -47,29 +47,31 @@ export default function BlockSpinner({
   });
   console.log(rotationSpeedRandom);
   useFrame((state, delta) => {
-    const clock = state.clock.getElapsedTime();
-    const eulerRotation = new THREE.Euler(
-      0,
-      clock * rotationSpeed * rotationSpeedRandom,
-      0
-    ); // Rotate around Y-axis
-    const quaternion = new THREE.Quaternion();
-    quaternion.setFromEuler(eulerRotation);
-    spinner.current.setNextKinematicTranslation({
-      x:
-        minTranslation[0] +
-        Math.sin(clock * translationSpeed) * maxTranslation[0] +
-        position[0],
-      y:
-        minTranslation[1] +
-        (Math.sin(clock * translationSpeed) + 1) * maxTranslation[1] +
-        0.1,
-      z:
-        minTranslation[2] +
-        Math.cos(clock * translationSpeed) * maxTranslation[2] +
-        position[1],
-    });
-    spinner.current.setNextKinematicRotation(quaternion);
+    if (spinner.current) {
+      const clock = state.clock.getElapsedTime();
+      const eulerRotation = new THREE.Euler(
+        0,
+        clock * rotationSpeed * rotationSpeedRandom,
+        0
+      ); // Rotate around Y-axis
+      const quaternion = new THREE.Quaternion();
+      quaternion.setFromEuler(eulerRotation);
+      spinner.current.setNextKinematicTranslation({
+        x:
+          minTranslation[0] +
+          Math.sin(clock * translationSpeed) * maxTranslation[0] +
+          position[0],
+        y:
+          minTranslation[1] +
+          (Math.sin(clock * translationSpeed) + 1) * maxTranslation[1] +
+          0.1,
+        z:
+          minTranslation[2] +
+          Math.cos(clock * translationSpeed) * maxTranslation[2] +
+          position[1],
+      });
+      spinner.current.setNextKinematicRotation(quaternion);
+    }
   });
   return (
     <group position={position}>

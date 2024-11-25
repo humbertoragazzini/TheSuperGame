@@ -36,16 +36,18 @@ export default function BlockLimboBar({
   });
 
   useFrame((state, delta) => {
-    const clock = state.clock.getElapsedTime();
-    limbobar.current.setNextKinematicTranslation({
-      x: position[0],
-      y:
-        minTranslation[1] +
-        (Math.sin(clock * translationSpeed + offsetTranslation) + 1) *
-          maxTranslation[1] +
-        0.1,
-      z: position[2],
-    });
+    if (limbobar.current) {
+      const clock = state.clock.getElapsedTime();
+      limbobar.current.setNextKinematicTranslation({
+        x: position[0],
+        y:
+          minTranslation[1] +
+          (Math.sin(clock * translationSpeed + offsetTranslation) + 1) *
+            maxTranslation[1] +
+          0.1,
+        z: position[2],
+      });
+    }
   });
   return (
     <group position={position}>
