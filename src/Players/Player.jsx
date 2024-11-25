@@ -8,6 +8,7 @@ export default function Player({ position = [0, 10, 0] }) {
       colliders={"ball"}
       restitution={0.65}
       friction={1}
+      canSleep={false}
     >
       <mesh>
         <icosahedronGeometry args={[0.5, 1]} />
