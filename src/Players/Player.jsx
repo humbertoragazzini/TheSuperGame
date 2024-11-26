@@ -3,7 +3,7 @@ import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
 import { TorusKnotGeometry } from "three";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 export default function Player({ position = [0, 10, 0] }) {
@@ -12,7 +12,22 @@ export default function Player({ position = [0, 10, 0] }) {
   const mesh = useRef();
   const { camera } = useThree();
 
-  const jump = () => {};
+  const jump = () => {
+    console.log("jump");
+  };
+
+  useEffect(() => {
+    subscribeKeys(
+      (state) => {
+        return state.jump;
+      },
+      (value) => {
+        if (value) {
+          jump();
+        }
+      }
+    );
+  }, []);
 
   useFrame((state, delta) => {
     if (playerRef.current) {
