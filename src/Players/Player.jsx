@@ -14,6 +14,8 @@ export default function Player({ position = [0, 10, 0] }) {
 
   const jump = () => {
     playerRef.current.applyImpulse({ x: 0, y: 5, z: 0 });
+    const origin = playerRef.current.translation();
+    origin.y -= 0.25;
   };
 
   useEffect(() => {
