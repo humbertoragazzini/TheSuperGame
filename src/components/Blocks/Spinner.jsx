@@ -45,7 +45,6 @@ export default function BlockSpinner({
   const [rotationSpeedRandom] = useState(() => {
     return Math.random() - 0.5 > 0 ? -1 : 1;
   });
-  console.log(rotationSpeedRandom);
   useFrame((state, delta) => {
     if (spinner.current) {
       const clock = state.clock.getElapsedTime();

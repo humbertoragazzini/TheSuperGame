@@ -1,4 +1,4 @@
-import { RigidBody } from "@react-three/rapier";
+import { RigidBody, useRapier } from "@react-three/rapier";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
@@ -11,11 +11,16 @@ export default function Player({ position = [0, 10, 0] }) {
   const playerRef = useRef();
   const mesh = useRef();
   const { camera } = useThree();
+  const { rapier, world } = useRapier();
 
   const jump = () => {
     playerRef.current.applyImpulse({ x: 0, y: 5, z: 0 });
     const origin = playerRef.current.translation();
     origin.y -= 0.25;
+    const direction = { x: 0, y: -1, z: 0 };
+    const ray = new rapier.Ray(origin, direction);
+    const hit = world.castRay(ray);
+    console.log(hit);
   };
 
   useEffect(() => {
