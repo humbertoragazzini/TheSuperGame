@@ -25,7 +25,7 @@ export default function Player({ position = [0, 10, 0] }) {
   };
 
   useEffect(() => {
-    subscribeKeys(
+    const unsubscribe = subscribeKeys(
       (state) => {
         return state.jump;
       },
@@ -35,6 +35,10 @@ export default function Player({ position = [0, 10, 0] }) {
         }
       }
     );
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   useFrame((state, delta) => {
