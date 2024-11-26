@@ -13,7 +13,7 @@ export default function Player({ position = [0, 10, 0] }) {
   const { camera } = useThree();
 
   const jump = () => {
-    console.log("jump");
+    playerRef.current.applyImpulse({ x: 0, y: 5, z: 0 });
   };
 
   useEffect(() => {
@@ -48,9 +48,9 @@ export default function Player({ position = [0, 10, 0] }) {
       if (rightward) {
         impulse.z = impulseStrenght;
       }
-      if (jump) {
-        impulse.y = impulseStrenght * 15;
-      }
+      // if (jump) {
+      //   impulse.y = impulseStrenght * 15;
+      // }
       camera.position.x = playerRef.current.translation().x - 5;
       camera.position.z = playerRef.current.translation().z;
       camera.position.y = 3.5;
