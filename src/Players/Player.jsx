@@ -11,15 +11,15 @@ export default function Player({ position = [0, 10, 0] }) {
   const playerRef = useRef();
   const mesh = useRef();
   const { camera } = useThree();
-  console.log(subscribeKeys);
-  console.log(getKeys);
+
+  const jump = () => {};
 
   useFrame((state, delta) => {
     if (playerRef.current) {
       const { forward, backward, leftward, rightward, jump } = getKeys();
       const impulse = { x: 0, y: 0, z: 0 };
       const torque = { x: 0, y: 0, z: 0 };
-      const impulseStrenght = 1 * delta;
+      const impulseStrenght = 5 * delta;
       const torqueStrenght = 1 * delta;
       if (forward) {
         impulse.x = impulseStrenght;
@@ -36,7 +36,6 @@ export default function Player({ position = [0, 10, 0] }) {
       if (jump) {
         impulse.y = impulseStrenght * 15;
       }
-      console.log(playerRef.current.translation());
       camera.position.x = playerRef.current.translation().x - 5;
       camera.position.z = playerRef.current.translation().z;
       camera.position.y = 3.5;
@@ -59,6 +58,8 @@ export default function Player({ position = [0, 10, 0] }) {
       restitution={0.65}
       friction={1}
       canSleep={false}
+      angularDamping={0.5}
+      linearDamping={0.5}
       ref={playerRef}
     >
       <mesh ref={mesh}>
