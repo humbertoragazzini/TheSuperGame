@@ -14,13 +14,14 @@ export default function Player({ position = [0, 10, 0] }) {
   const { rapier, world } = useRapier();
 
   const jump = () => {
-    playerRef.current.applyImpulse({ x: 0, y: 5, z: 0 });
     const origin = playerRef.current.translation();
-    origin.y -= 0.25;
+    origin.y -= 0.55;
     const direction = { x: 0, y: -1, z: 0 };
     const ray = new rapier.Ray(origin, direction);
-    const hit = world.castRay(ray);
-    console.log(hit);
+    const hit = world.castRay(ray, 10, true);
+    if (hit.timeOfImpact < 0.05 && hit.timeOfImpact !== null) {
+      playerRef.current.applyImpulse({ x: 0, y: 3, z: 0 });
+    }
   };
 
   useEffect(() => {

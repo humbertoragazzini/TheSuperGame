@@ -19,7 +19,6 @@ export default function Level({
 
     for (let i = 0; i < count; i++) {
       const index = Math.floor(Math.random() * types.length);
-      console.log(index);
       const type = types[index];
       blocks.push(type);
     }
