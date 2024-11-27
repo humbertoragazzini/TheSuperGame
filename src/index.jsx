@@ -29,7 +29,7 @@ root.render(
       <Experience />
     </Canvas>
     <div>
-      <button>up</button>
+      <button className="">up</button>
       <button>down</button>
       <button>left</button>
       <button>right</button>

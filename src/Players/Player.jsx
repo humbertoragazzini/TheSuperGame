@@ -63,11 +63,7 @@ export default function Player({ position = [0, 10, 0] }) {
     }
 
     const translation = playerRef.current.translation();
-    const position = new THREE.Vector3(
-      translation.x - 5,
-      translation.y + 5,
-      3.5
-    );
+    const position = new THREE.Vector3(translation.x - 5, translation.y + 2, 0);
     const target = new THREE.Vector3(
       translation.x,
       translation.y,
