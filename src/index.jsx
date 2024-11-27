@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.jsx";
 import { KeyboardControls } from "@react-three/drei";
+import Controllers from "./components/Interface/Controllers.jsx";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
@@ -28,11 +29,6 @@ root.render(
       <color args={["black"]} attach={"background"}></color>
       <Experience />
     </Canvas>
-    <div>
-      <button className="">up</button>
-      <button>down</button>
-      <button>left</button>
-      <button>right</button>
-    </div>
+    <Controllers></Controllers>
   </KeyboardControls>
 );
