@@ -2,7 +2,7 @@ import "./style.css";
 import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.jsx";
-import { Html, KeyboardControls } from "@react-three/drei";
+import { KeyboardControls } from "@react-three/drei";
 import Controllers from "./components/Interface/Controllers.jsx";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
@@ -28,9 +28,7 @@ root.render(
     >
       <color args={["black"]} attach={"background"}></color>
       <Experience />
-      <Html transform={false}>
-        <Controllers></Controllers>
-      </Html>
     </Canvas>
+    <Controllers></Controllers>
   </KeyboardControls>
 );

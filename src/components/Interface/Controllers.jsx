@@ -1,27 +1,34 @@
+import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Controllers() {
   const [forward, setForward] = useState();
 
-  useFrame((state, delta) => {
-    const impulse = { x: 0, y: 0, z: 0 };
-    const torque = { x: 0, y: 0, z: 0 };
-    const impulseStrenght = 5 * delta;
-    const torqueStrenght = 1 * delta;
-    if (forward) {
-      impulse.x = impulseStrenght;
-    }
-    if (backward) {
-      impulse.x = -impulseStrenght;
-    }
-    if (leftward) {
-      impulse.z = -impulseStrenght;
-    }
-    if (rightward) {
-      impulse.z = impulseStrenght;
-    }
-  });
+  const [subscribeKeys, getKeys] = useKeyboardControls();
+
+  useEffect(() => {
+    console.log(getKeys);
+  }, []);
+
+  // useFrame((state, delta) => {
+  //   const impulse = { x: 0, y: 0, z: 0 };
+  //   const torque = { x: 0, y: 0, z: 0 };
+  //   const impulseStrenght = 5 * delta;
+  //   const torqueStrenght = 1 * delta;
+  //   if (forward) {
+  //     impulse.x = impulseStrenght;
+  //   }
+  //   if (backward) {
+  //     impulse.x = -impulseStrenght;
+  //   }
+  //   if (leftward) {
+  //     impulse.z = -impulseStrenght;
+  //   }
+  //   if (rightward) {
+  //     impulse.z = impulseStrenght;
+  //   }
+  // });
   return (
     <div className="fixed bottom-0 h-[50vh] w-screen z-[9999]">
       <button
