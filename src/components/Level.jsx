@@ -33,7 +33,7 @@ export default function Level({
         return (
           <Block
             key={i}
-            position={[i * 4 + 4, Math.random() * -5, Math.random() * 5]}
+            position={[i * 4 + 4, Math.random() * 2, Math.random() * 5]}
           />
         );
       })}

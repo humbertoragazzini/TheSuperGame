@@ -3,7 +3,7 @@ import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
 import { TorusKnotGeometry } from "three";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 export default function Player({ position = [0, 10, 0] }) {
@@ -12,6 +12,8 @@ export default function Player({ position = [0, 10, 0] }) {
   const mesh = useRef();
   const { camera } = useThree();
   const { rapier, world } = useRapier();
+  const [smoothCameraPosition] = useState(() => new THREE.Vector3());
+  const [smoothCameraTarget] = useState(() => new THREE.Vector3());
 
   const jump = () => {
     const origin = playerRef.current.translation();
@@ -60,19 +62,23 @@ export default function Player({ position = [0, 10, 0] }) {
       if (rightward) {
         impulse.z = impulseStrenght;
       }
-      // if (jump) {
-      //   impulse.y = impulseStrenght * 15;
-      // }
-      camera.position.x = playerRef.current.translation().x - 5;
-      camera.position.z = playerRef.current.translation().z;
-      camera.position.y = 3.5;
+
       const translation = playerRef.current.translation();
+      const position = new THREE.Vector3(
+        translation.x - 5,
+        translation.y + 5,
+        3.5
+      );
       const target = new THREE.Vector3(
         translation.x,
         translation.y,
         translation.z
       );
-      camera.lookAt(target);
+
+      smoothCameraPosition.lerp(position, 0.1);
+      smoothCameraTarget.lerp(target, 0.1);
+      state.camera.position.copy(smoothCameraPosition);
+      state.camera.lookAt(smoothCameraTarget);
       playerRef.current.applyImpulse(impulse);
       playerRef.current.applyTorqueImpulse(torque);
     }
