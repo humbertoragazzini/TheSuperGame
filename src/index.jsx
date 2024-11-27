@@ -28,5 +28,11 @@ root.render(
       <color args={["black"]} attach={"background"}></color>
       <Experience />
     </Canvas>
+    <div>
+      <button>up</button>
+      <button>down</button>
+      <button>left</button>
+      <button>right</button>
+    </div>
   </KeyboardControls>
 );
