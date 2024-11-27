@@ -12,8 +12,8 @@ export default function Player({ position = [0, 10, 0] }) {
   const mesh = useRef();
   const { camera } = useThree();
   const { rapier, world } = useRapier();
-  const [smoothCameraPosition] = useState(() => new THREE.Vector3(15, 15, 15));
-  const [smoothCameraTarget] = useState(() => new THREE.Vector3());
+  const [smoothCameraPosition] = useState(() => new THREE.Vector3(0, 0, 0));
+  const [smoothCameraTarget] = useState(() => new THREE.Vector3(15, 15, 15));
 
   const jump = () => {
     const origin = playerRef.current.translation();
@@ -44,44 +44,42 @@ export default function Player({ position = [0, 10, 0] }) {
   }, []);
 
   useFrame((state, delta) => {
-    if (playerRef.current) {
-      const { forward, backward, leftward, rightward, jump } = getKeys();
-      const impulse = { x: 0, y: 0, z: 0 };
-      const torque = { x: 0, y: 0, z: 0 };
-      const impulseStrenght = 5 * delta;
-      const torqueStrenght = 1 * delta;
-      if (forward) {
-        impulse.x = impulseStrenght;
-      }
-      if (backward) {
-        impulse.x = -impulseStrenght;
-      }
-      if (leftward) {
-        impulse.z = -impulseStrenght;
-      }
-      if (rightward) {
-        impulse.z = impulseStrenght;
-      }
-
-      const translation = playerRef.current.translation();
-      const position = new THREE.Vector3(
-        translation.x - 5,
-        translation.y + 5,
-        3.5
-      );
-      const target = new THREE.Vector3(
-        translation.x,
-        translation.y,
-        translation.z
-      );
-
-      smoothCameraPosition.lerp(position, 7 * delta);
-      smoothCameraTarget.lerp(target, 7 * delta);
-      state.camera.position.copy(smoothCameraPosition);
-      state.camera.lookAt(smoothCameraTarget);
-      playerRef.current.applyImpulse(impulse);
-      playerRef.current.applyTorqueImpulse(torque);
+    const { forward, backward, leftward, rightward, jump } = getKeys();
+    const impulse = { x: 0, y: 0, z: 0 };
+    const torque = { x: 0, y: 0, z: 0 };
+    const impulseStrenght = 5 * delta;
+    const torqueStrenght = 1 * delta;
+    if (forward) {
+      impulse.x = impulseStrenght;
     }
+    if (backward) {
+      impulse.x = -impulseStrenght;
+    }
+    if (leftward) {
+      impulse.z = -impulseStrenght;
+    }
+    if (rightward) {
+      impulse.z = impulseStrenght;
+    }
+
+    const translation = playerRef.current.translation();
+    const position = new THREE.Vector3(
+      translation.x - 5,
+      translation.y + 5,
+      3.5
+    );
+    const target = new THREE.Vector3(
+      translation.x,
+      translation.y,
+      translation.z
+    );
+
+    smoothCameraPosition.lerp(position, 7 * delta);
+    smoothCameraTarget.lerp(target, 7 * delta);
+    state.camera.position.copy(smoothCameraPosition);
+    state.camera.lookAt(smoothCameraTarget);
+    playerRef.current.applyImpulse(impulse);
+    playerRef.current.applyTorqueImpulse(torque);
   });
 
   return (
