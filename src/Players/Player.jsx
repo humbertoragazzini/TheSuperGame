@@ -12,7 +12,7 @@ export default function Player({ position = [0, 10, 0] }) {
   const mesh = useRef();
   const { camera } = useThree();
   const { rapier, world } = useRapier();
-  const [smoothCameraPosition] = useState(() => new THREE.Vector3());
+  const [smoothCameraPosition] = useState(() => new THREE.Vector3(15, 15, 15));
   const [smoothCameraTarget] = useState(() => new THREE.Vector3());
 
   const jump = () => {
@@ -75,8 +75,8 @@ export default function Player({ position = [0, 10, 0] }) {
         translation.z
       );
 
-      smoothCameraPosition.lerp(position, 0.1);
-      smoothCameraTarget.lerp(target, 0.1);
+      smoothCameraPosition.lerp(position, 7 * delta);
+      smoothCameraTarget.lerp(target, 7 * delta);
       state.camera.position.copy(smoothCameraPosition);
       state.camera.lookAt(smoothCameraTarget);
       playerRef.current.applyImpulse(impulse);
