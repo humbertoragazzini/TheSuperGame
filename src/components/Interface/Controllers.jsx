@@ -103,7 +103,7 @@ export default function Controllers() {
   };
 
   return (
-    <div className="fixed bottom-0 h-[50vh] w-screen z-[9999]">
+    <div className="fixed bottom-0 h-[50vh] w-screen z-40">
       <button
         onTouchStart={(e) => ArrowUpPress()}
         onTouchEnd={(e) => ArrowUpRelease()}
