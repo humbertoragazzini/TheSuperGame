@@ -104,12 +104,12 @@ export default function Controllers() {
 
   return (
     <div>
-      <div className="fixed bottom-0 h-[50vh] w-screen z-40">
-        <div className="relative bottom-0 grid grid-cols-6">
+      <div className="fixed bottom-0 h-[50vh] w-screen flex flex-col justify-end align-center z-40">
+        <div className="relative min-w-[300px] h-[300px] bottom-0 grid grid-cols-6">
           <button
             onTouchStart={(e) => ArrowUpPress()}
             onTouchEnd={(e) => ArrowUpRelease()}
-            className="w-full bg-slate-500 h-1/2 border-2 border-white opacity-50 h-24 col-start-1 col-end-3"
+            className="w-full bg-slate-500 h-1/2 border-b-0 border-2 border-white opacity-75 h-24 col-start-1 col-end-3"
           ></button>
           <button
             onTouchStart={(e) => ArrowUpPress()}
@@ -120,7 +120,7 @@ export default function Controllers() {
           <button
             onTouchStart={(e) => ArrowUpPress()}
             onTouchEnd={(e) => ArrowUpRelease()}
-            className="w-full bg-slate-500 h-1/2 border-2 border-white opacity-50 h-24 col-start-1 col-end-3"
+            className="w-full bg-slate-500 border-2 border-white border-b-0 border-t-0 opacity-75 h-24 col-start-1 col-end-3"
           ></button>
           <button
             onTouchStart={(e) => ArrowLeftPress()}
@@ -137,7 +137,7 @@ export default function Controllers() {
           <button
             onTouchStart={(e) => ArrowUpPress()}
             onTouchEnd={(e) => ArrowUpRelease()}
-            className="w-full bg-slate-500 h-1/2 border-2 border-white opacity-50 h-24 col-start-1 col-end-3"
+            className="w-full bg-slate-500 h-1/2 border-t-0 border-2 border-white opacity-75 h-28 col-start-1 col-end-3"
           ></button>
           <button
             onTouchStart={(e) => ArrowDownPress()}
