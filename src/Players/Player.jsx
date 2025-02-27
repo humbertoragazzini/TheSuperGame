@@ -61,7 +61,15 @@ export default function Player({ position = [0, 10, 0] }) {
     if (rightward) {
       impulse.z = impulseStrenght;
     }
-
+    console.log(state.camera.position.y);
+    if (state.camera.position.y < -20) {
+      console.log(state.camera.position.y);
+      playerRef.current.setTranslation({
+        x: state.camera.position.x,
+        y: 10,
+        z: state.camera.position.z,
+      });
+    }
     const translation = playerRef.current.translation();
     const position = new THREE.Vector3(translation.x - 5, translation.y + 2, 0);
     const target = new THREE.Vector3(
@@ -69,7 +77,6 @@ export default function Player({ position = [0, 10, 0] }) {
       translation.y,
       translation.z
     );
-
     smoothCameraPosition.lerp(position, 7 * delta);
     smoothCameraTarget.lerp(target, 7 * delta);
     state.camera.position.copy(smoothCameraPosition);
