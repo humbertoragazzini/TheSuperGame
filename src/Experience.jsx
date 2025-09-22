@@ -14,7 +14,7 @@ export default function Experience() {
 
       <Lights />
       <Physics>
-        <Level count={150}></Level>
+        <Level count={2}></Level>
         <Player position={[0, 0.1, 0]}></Player>
       </Physics>
     </>
