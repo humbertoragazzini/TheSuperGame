@@ -3,9 +3,17 @@ import Controllers from "./Controllers";
 export default function Interface() {
   return (
     <div className="w-screen h-screen fixed top-0 left-0">
-      {/* Menu */}#
+      {/* Menu */}
       <div className="absolute right-0 top-0 m-4 rounded-md w-12 h-12 bg-red-600 hover:bg-green-400">
         Menu
+      </div>
+      <div className="w-full h-full bg-[rgba(155,25,180,0.5)] backdrop-blur-md flex flex-col justify-center items-center">
+        {/* Start */}
+        <h2 className="text-3xl text-white font-bold">Start</h2>
+        <h2 className="text-3xl text-white font-bold">Settings</h2>
+        <h2 className="text-3xl text-white font-bold">Levels</h2>
+        <h2 className="text-3xl text-white font-bold">About</h2>
+        <h2 className="text-3xl text-white font-bold">Github</h2>
       </div>
 
       {/* Player stat */}
