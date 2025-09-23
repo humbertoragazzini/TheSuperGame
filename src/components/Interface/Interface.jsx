@@ -1,14 +1,24 @@
+import myZustand from "../../hooks/myZustand";
 import GameButton from "./Button";
 import Controllers from "./Controllers";
+import { motion } from "framer-motion";
+import { TfiMenu } from "react-icons/tfi";
 
 export default function Interface() {
+  const { isMenuOpen, toggleMenu } = myZustand();
+
   return (
     <div className="fixed top-0 left-0 w-screen h-screen">
       {/* Menu */}
-      <div className="absolute top-0 right-0 w-12 h-12 m-4 bg-red-600 rounded-md hover:bg-green-400">
-        Menu
-      </div>
-      <div className="w-full h-full bg-[rgba(0,0,0,0.95)] backdrop-blur-md flex flex-col justify-center items-center">
+      <GameButton theme={"transparent"} className={"absolute top-0 right-0"}>
+        <TfiMenu />
+      </GameButton>
+      <motion.div
+        style={{
+          x: isMenuOpen ? 0 : 1500,
+        }}
+        className="w-full h-full bg-[rgba(0,0,0,0.95)] backdrop-blur-md flex flex-col justify-center items-center"
+      >
         <div className="m-3">
           <GameButton theme={"transparent"}>START GAME</GameButton>
         </div>
@@ -21,7 +31,7 @@ export default function Interface() {
         <div className="m-3">
           <GameButton theme={"transparent"}>ABOUT US</GameButton>
         </div>
-      </div>
+      </motion.div>
 
       {/* Player stat */}
       <div className="fixed top-0 left-0 bg-[rgba(1,1,1,0.5)] z-50 hidden">

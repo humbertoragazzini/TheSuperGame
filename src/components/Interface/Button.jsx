@@ -8,6 +8,7 @@ export default function GameButton({
   theme,
   icon,
 }) {
+  let size = "";
   let textColor = "";
   let iconColor = "";
   let backgroundColor = "";
@@ -191,6 +192,17 @@ export default function GameButton({
       backgroundColor = "#fff";
       break;
   }
+  switch (size) {
+    case "large":
+      size = "px-12 py-12";
+      break;
+    case "medium":
+      size = "px-8 py-8";
+      break;
+    default:
+      size = "px-6 py-6";
+      break;
+  }
 
   return (
     <button
@@ -204,7 +216,7 @@ export default function GameButton({
       <div
         ref={bgRef}
         style={{ color: textColor, backgroundColor }}
-        className="relative px-12 py-12 flex items-center justify-center w-full h-full rounded-full btn-body text-[40px] border border-[rgba(255,255,255,0.2)]"
+        className="relative flex items-center justify-center w-full h-full rounded-full btn-body text-[40px] border border-[rgba(255,255,255,0.2)]"
       >
         <span>{children}</span>
       </div>
