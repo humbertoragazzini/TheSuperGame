@@ -8,7 +8,7 @@ export default function Interface() {
       <div className="absolute top-0 right-0 w-12 h-12 m-4 bg-red-600 rounded-md hover:bg-green-400">
         Menu
       </div>
-      <div className="w-full h-full bg-[rgba(155,25,180,0.5)] backdrop-blur-md flex flex-col justify-center items-center">
+      <div className="w-full h-full bg-[rgba(0,0,0,0.95)] backdrop-blur-md flex flex-col justify-center items-center">
         <div className="m-3">
           <GameButton theme={"transparent"}>START GAME</GameButton>
         </div>
