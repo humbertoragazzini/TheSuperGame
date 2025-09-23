@@ -10,7 +10,11 @@ export default function Interface() {
   return (
     <div className="fixed top-0 left-0 w-screen h-screen">
       {/* Menu */}
-      <GameButton theme={"transparent"} className={"absolute top-0 right-0"}>
+      <GameButton
+        theme={"transparent"}
+        className={"absolute top-0 right-0 m-3"}
+        onClick={() => toggleMenu()}
+      >
         <TfiMenu />
       </GameButton>
       <motion.div

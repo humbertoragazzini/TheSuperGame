@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 export default function GameButton({
   children,
   className,
+  onClick,
   rainbow,
   theme,
   icon,
@@ -210,13 +211,16 @@ export default function GameButton({
       className={`${buttonBase} ${className || ""}`}
       aria-label={typeof children === "string" ? children : undefined}
       ref={ref}
+      onClick={() => onClick()}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
     >
       <div
         ref={bgRef}
         style={{ color: textColor, backgroundColor }}
-        className="relative flex items-center justify-center w-full h-full rounded-full btn-body text-[40px] border border-[rgba(255,255,255,0.2)]"
+        className={`relative flex items-center justify-center w-full h-full rounded-full btn-body text-[40px] border border-[rgba(255,255,255,0.2)] ${
+          size ?? ""
+        }`}
       >
         <span>{children}</span>
       </div>
