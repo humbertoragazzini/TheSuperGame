@@ -181,15 +181,48 @@ export default function GameButton({
       textColor = "#fff";
       backgroundColor = "rgba(0,0,0,0.1)";
       break;
+
     case "black":
       textColor = "#fff";
       backgroundColor = "#000";
       break;
+
+    case "arcade-pink":
+      textColor = "#0A0A0A"; // black for strong contrast
+      backgroundColor = "#FF2D95"; // electric pink
+      break;
+
+    case "arcade-cyan":
+      textColor = "#0A0A0A";
+      backgroundColor = "#00F0FF"; // neon cyan
+      break;
+
+    case "arcade-purple":
+      textColor = "#fff";
+      backgroundColor = "#7A00FF"; // laser purple
+      break;
+
+    case "arcade-green":
+      textColor = "#0A0A0A";
+      backgroundColor = "#39FF14"; // acid green
+      break;
+
+    case "arcade-orange":
+      textColor = "#fff";
+      backgroundColor = "#FF6B00"; // hot orange
+      break;
+
+    case "arcade-yellow":
+      textColor = "#0A0A0A";
+      backgroundColor = "#FFE600"; // CRT yellow
+      break;
+
     default:
       textColor = "#000";
       backgroundColor = "#fff";
       break;
   }
+
   switch (size) {
     case "large":
       size = "px-12 py-12";

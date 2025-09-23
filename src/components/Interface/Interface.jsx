@@ -4,6 +4,7 @@ import GameButton from "./Button";
 import Controllers from "./Controllers";
 import { AnimatePresence, motion } from "framer-motion";
 import { TfiMenu } from "react-icons/tfi";
+import FloatWrapper from "../atoms/FloatWrapper";
 
 export default function Interface() {
   const { isMenuOpen, toggleMenu } = myZustand();
@@ -39,23 +40,37 @@ export default function Interface() {
             role="dialog"
             aria-modal="true"
           >
-            <div className="m-3">
-              <GameButton theme="transparent">START GAME</GameButton>
-            </div>
-            <div className="m-3">
-              <GameButton theme="transparent">SCORES</GameButton>
-            </div>
-            <div className="m-3">
-              <GameButton theme="transparent">SETTINGS</GameButton>
-            </div>
-            <div className="m-3">
-              <GameButton theme="transparent">ABOUT US</GameButton>
-            </div>
-            <div className="m-3">
-              <GameButton theme="transparent" onclick={toggleMenu}>
-                EXIT
-              </GameButton>
-            </div>
+            <FloatWrapper rotate>
+              <div className="m-3">
+                <GameButton theme="arcade-pink">START GAME</GameButton>
+              </div>
+            </FloatWrapper>
+
+            <FloatWrapper rotate>
+              <div className="m-3">
+                <GameButton theme="arcade-green">SCORES</GameButton>
+              </div>
+            </FloatWrapper>
+
+            <FloatWrapper rotate>
+              <div className="m-3">
+                <GameButton theme="arcade-purple">SETTINGS</GameButton>
+              </div>
+            </FloatWrapper>
+
+            <FloatWrapper rotate>
+              <div className="m-3">
+                <GameButton theme="arcade-cyandad">ABOUT US</GameButton>
+              </div>
+            </FloatWrapper>
+
+            <FloatWrapper rotate>
+              <div className="m-3">
+                <GameButton theme="arcade-orange" onclick={toggleMenu}>
+                  EXIT
+                </GameButton>
+              </div>
+            </FloatWrapper>
           </motion.div>
         )}
       </AnimatePresence>

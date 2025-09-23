@@ -15,3 +15,49 @@ body,
   font-weight: 400;
   font-style: normal;
 }
+/* --- neutral themes --- */
+.theme-transparent {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-black {
+  color: #fff;
+  background-color: #000;
+}
+
+.theme-default {
+  color: #000;
+  background-color: #fff;
+}
+
+/* --- arcade neon themes --- */
+.theme-arcade-pink {
+  color: #0a0a0a; /* dark text */
+  background-color: #ff2d95; /* electric pink */
+}
+
+.theme-arcade-cyan {
+  color: #0a0a0a;
+  background-color: #00f0ff; /* neon cyan */
+}
+
+.theme-arcade-purple {
+  color: #fff;
+  background-color: #7a00ff; /* laser purple */
+}
+
+.theme-arcade-green {
+  color: #0a0a0a;
+  background-color: #39ff14; /* acid green */
+}
+
+.theme-arcade-orange {
+  color: #fff;
+  background-color: #ff6b00; /* hot orange */
+}
+
+.theme-arcade-yellow {
+  color: #0a0a0a;
+  background-color: #ffe600; /* CRT yellow */
+}
