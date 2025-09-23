@@ -175,10 +175,10 @@ export default function GameButton({
 
   // theme colors
   switch (theme) {
-    case "dark-blue":
+    case "transparent":
       textColor = "#fff";
       iconColor = "#FF5353";
-      backgroundColor = "#121132";
+      backgroundColor = "rgba(0,0,0,0.1)";
       break;
     case "light-blue":
       textColor = "#121132";
@@ -204,7 +204,7 @@ export default function GameButton({
       <div
         ref={bgRef}
         style={{ color: textColor, backgroundColor }}
-        className="relative px-12 py-12 flex items-center justify-center w-full h-full rounded-full btn-body text-[40px]"
+        className="relative px-12 py-12 flex items-center justify-center w-full h-full rounded-full btn-body text-[40px] border border-[rgba(255,255,255,0.2)]"
       >
         <span>{children}</span>
       </div>
