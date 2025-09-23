@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export default function GameButton({
   children,
   className,
-  onClick,
+  onclick,
   rainbow,
   theme,
   icon,
@@ -211,7 +211,10 @@ export default function GameButton({
       className={`${buttonBase} ${className || ""}`}
       aria-label={typeof children === "string" ? children : undefined}
       ref={ref}
-      onClick={() => onClick()}
+      onClick={() => {
+        console.log("click");
+        onclick();
+      }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
     >

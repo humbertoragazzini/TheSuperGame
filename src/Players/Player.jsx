@@ -61,7 +61,7 @@ export default function Player({ position = [0, 10, 0] }) {
     if (rightward) {
       impulse.z = impulseStrenght;
     }
-    console.log(state.camera.position.y);
+    // console.log(state.camera.position.y);
     if (state.camera.position.y < -20) {
       console.log(state.camera.position.y);
       playerRef.current.setTranslation({

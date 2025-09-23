@@ -6,7 +6,7 @@ const myZustand = create((set) => ({
   isMenuOpen: false,
 
   // --- actions ---
-  toggleMenu: () => set((state) => ({ isMenuOpen: !state })),
+  toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
 }));
 
 export default myZustand;

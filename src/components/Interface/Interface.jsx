@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import myZustand from "../../hooks/myZustand";
 import GameButton from "./Button";
 import Controllers from "./Controllers";
@@ -7,13 +8,17 @@ import { TfiMenu } from "react-icons/tfi";
 export default function Interface() {
   const { isMenuOpen, toggleMenu } = myZustand();
 
+  useEffect(() => {
+    console.log(isMenuOpen);
+  }, [isMenuOpen]);
+
   return (
     <div className="fixed top-0 left-0 w-screen h-screen">
       {/* Menu */}
       <GameButton
         theme={"transparent"}
         className={"absolute top-0 right-0 m-3"}
-        onClick={() => toggleMenu()}
+        onclick={toggleMenu}
       >
         <TfiMenu />
       </GameButton>
