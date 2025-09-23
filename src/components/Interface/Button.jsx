@@ -195,7 +195,7 @@ export default function GameButton({
   return (
     <button
       type="button"
-      className={`m-10 ${buttonBase} ${className || ""}`}
+      className={`${buttonBase} ${className || ""}`}
       aria-label={typeof children === "string" ? children : undefined}
       ref={ref}
       onMouseMove={onMove}

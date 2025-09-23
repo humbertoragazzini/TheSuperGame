@@ -9,17 +9,17 @@ export default function Interface() {
         Menu
       </div>
       <div className="w-full h-full bg-[rgba(155,25,180,0.5)] backdrop-blur-md flex flex-col justify-center items-center">
-        <div>
+        <div className="m-3">
           <GameButton theme={"transparent"}>START GAME</GameButton>
         </div>
-        <div>
-          <MenuButton>SCORES</MenuButton>
+        <div className="m-3">
+          <GameButton theme={"transparent"}>SCORES</GameButton>
         </div>
-        <div>
-          <MenuButton>SETTINGS</MenuButton>
+        <div className="m-3">
+          <GameButton theme={"transparent"}>SETTINGS</GameButton>
         </div>
-        <div>
-          <MenuButton>ABOUT US</MenuButton>
+        <div className="m-3">
+          <GameButton theme={"transparent"}>ABOUT US</GameButton>
         </div>
       </div>
 
