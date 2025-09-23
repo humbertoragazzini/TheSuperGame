@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import myZustand from "../../hooks/myZustand";
 import GameButton from "./Button";
 import Controllers from "./Controllers";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { TfiMenu } from "react-icons/tfi";
 
 export default function Interface() {
@@ -17,30 +17,48 @@ export default function Interface() {
       {/* Menu */}
       <GameButton
         theme={"transparent"}
-        className={"absolute top-0 right-0 m-3"}
+        className={"fixed top-0 right-0 m-3"}
         onclick={toggleMenu}
       >
         <TfiMenu />
       </GameButton>
-      <motion.div
-        style={{
-          x: isMenuOpen ? 0 : 1500,
-        }}
-        className="w-full h-full bg-[rgba(0,0,0,0.95)] backdrop-blur-md flex flex-col justify-center items-center"
-      >
-        <div className="m-3">
-          <GameButton theme={"transparent"}>START GAME</GameButton>
-        </div>
-        <div className="m-3">
-          <GameButton theme={"transparent"}>SCORES</GameButton>
-        </div>
-        <div className="m-3">
-          <GameButton theme={"transparent"}>SETTINGS</GameButton>
-        </div>
-        <div className="m-3">
-          <GameButton theme={"transparent"}>ABOUT US</GameButton>
-        </div>
-      </motion.div>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            key="game-menu"
+            // start off-screen to the right, fade in
+            initial={{ x: 1500, opacity: 0 }}
+            animate={{
+              x: 0,
+              opacity: 1,
+              transition: { type: "spring", stiffness: 260, damping: 24 },
+            }}
+            // slide out to the right, quick fade out
+            exit={{ x: 1500, opacity: 0, transition: { duration: 0.25 } }}
+            className="fixed inset-0 w-full h-full bg-[rgba(0,0,0,0.95)] backdrop-blur-md flex flex-col justify-center items-center"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="m-3">
+              <GameButton theme="transparent">START GAME</GameButton>
+            </div>
+            <div className="m-3">
+              <GameButton theme="transparent">SCORES</GameButton>
+            </div>
+            <div className="m-3">
+              <GameButton theme="transparent">SETTINGS</GameButton>
+            </div>
+            <div className="m-3">
+              <GameButton theme="transparent">ABOUT US</GameButton>
+            </div>
+            <div className="m-3">
+              <GameButton theme="transparent" onclick={toggleMenu}>
+                EXIT
+              </GameButton>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Player stat */}
       <div className="fixed top-0 left-0 bg-[rgba(1,1,1,0.5)] z-50 hidden">
