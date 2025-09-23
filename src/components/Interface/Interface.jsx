@@ -1,3 +1,4 @@
+import GameButton from "./Button";
 import Controllers from "./Controllers";
 
 export default function Interface() {
@@ -9,7 +10,7 @@ export default function Interface() {
       </div>
       <div className="w-full h-full bg-[rgba(155,25,180,0.5)] backdrop-blur-md flex flex-col justify-center items-center">
         <div>
-          <MenuButton>START GAME</MenuButton>
+          <GameButton theme={"dark-blue"}>START GAME</GameButton>
         </div>
         <div>
           <MenuButton>SCORES</MenuButton>
