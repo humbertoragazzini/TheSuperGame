@@ -179,17 +179,14 @@ export default function GameButton({
   switch (theme) {
     case "transparent":
       textColor = "#fff";
-      iconColor = "#FF5353";
       backgroundColor = "rgba(0,0,0,0.1)";
       break;
-    case "light-blue":
-      textColor = "#121132";
-      iconColor = "#121132";
-      backgroundColor = "#35D4DA";
+    case "black":
+      textColor = "#fff";
+      backgroundColor = "#000";
       break;
     default:
-      textColor = "#121132";
-      iconColor = "#FF5353";
+      textColor = "#000";
       backgroundColor = "#fff";
       break;
   }
@@ -201,7 +198,7 @@ export default function GameButton({
       size = "px-8 py-8";
       break;
     default:
-      size = "px-6 py-6";
+      size = "px-9 py-6";
       break;
   }
 
